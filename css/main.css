@@ -1,9 +1,11 @@
 /**
  * Global stylesheet
  */
+html, body{
+	height:100%;
+}
 body{
     width:100%;
-    height:100%;
     background-color:#f1f1f1;
 }
 header,footer {
@@ -18,6 +20,13 @@ header span, select{
 header > .bg-darkred .pull-right{
     margin-top:6px;
     margin-bottom:6px;
+}
+header > .bg-darkred a{
+	color:#fefefe;
+}
+header > .bg-darkred a:hover{
+	color:#fefefe;
+	text-decoration:none;
 }
 header > .bg-red > .container{
     padding-top:20px;
@@ -59,6 +68,15 @@ header .icons a:hover{
     color:#971213;
 }
 
+.main-container{
+	min-height:100%;
+	height:auto !important;
+	height:100%;
+	margin-bottom:-30px;
+}
+footer,.push{
+	height:30px;
+}
 footer{
     padding:8px 0;
     font-size:11px;
@@ -106,7 +124,6 @@ footer{
 /**
  * BANNER
  */
-/* banner description */
 .banner > div{
     padding:0;
     color:#fefefe;
@@ -117,6 +134,87 @@ footer{
     color:#fefefe;
     font-style:italic;
 }
+
+/**
+ * CAROUSEL
+ */
+ .carousel{
+	margin:20px 0;
+ }
+ .carousel > .display{
+	padding-left:0;
+ }
+ .carousel > .list-control{
+	padding-right:0;
+ }
+ .carousel .inner{
+	overflow:hidden;
+	height:360px;
+ }
+ .carousel .item{
+	width:100%;
+	height:360px;
+	display:none;
+ }
+ .carousel .item.active{
+	display:block;
+ }
+ .carousel img{
+	width:100%;
+	height:100%;
+ }
+ .carousel ol{
+	list-style:none;
+	padding:0;
+ }
+ .carousel ol li{
+	position:relative;
+	display:inline-block;
+	width:100%;
+	height:80px;
+	cursor:pointer;
+ }
+ .carousel ol li+li{
+	margin-top:10px;
+ }
+.overlay {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:rgba(0, 0, 0, 0.65);
+    background: url(data:;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuNUmK/OAAAAATSURBVBhXY2RgYNgHxGAAYuwDAA78AjwwRoQYAAAAAElFTkSuQmCC) repeat scroll transparent\9; // fallback for IE
+    z-index:9999;
+    color:white;
+}
+.overlay > .arrow{
+	position:absolute;
+	top:50%;
+	left:-10px;
+	margin-top:-11px;
+	width: 0; 
+	height: 0; 
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent; 
+	border-right:10px solid #3e3e3e; 
+}
+
+/**
+ * BOOKCASE
+ */
+ .bookcase h4{
+	font-weight:bold;
+	margin:20px 0;
+ }
+ .bookcase ul{
+	list-style:none;
+	padding:0;
+ }
+ .bookcase li {
+	display:inline-block;
+	margin:5px 10px;
+ }
 
 /**
  * FOOTER TABLE
@@ -139,4 +237,34 @@ footer{
 }
 .footer-table ul a{
     color:#606060;
+}
+.footer-table ul.icons{
+	width:140px;
+}
+ul.icons li{
+	display:inline-block;
+	margin-right:5px;
+}
+ul.icons i {
+	display:inline-block;
+	width:30px;
+	height:24px;
+}
+i.icon-visa{
+	background:url('../images/icon-visa.png') center 100%;
+}
+i.icon-cod{
+	background:url('../images/icon-cod.png') center 100%;
+}
+i.icon-amex{
+	background:url('../images/icon-amex.png') center 100%;
+}
+i.icon-maestro{
+	background:url('../images/icon-maestro.png') center 100%;
+}
+i.icon-master{
+	background:url('../images/icon-master.png') center 100%;
+}
+i.icon-paypal{
+	background:url('../images/icon-paypal.png') center 100%;
 }
