@@ -1,0 +1,2 @@
+echo "Starting foreman..."
+foreman start -f Procfile_dev

@@ -3,8 +3,9 @@
 Challenge for Tusitala's BookMart
 
 ## Running Locally
-
-There is a problem while running foreman in local machine, so I am forced to use apache2 with VirtualHost.
+```
+bash server
+```
 
 ## Deploying to Heroku
 
@@ -13,6 +14,8 @@ $ heroku create
 $ git push heroku master
 $ heroku open
 ```
+
+Live demo can be observed [here](http://warm-springs-5019.herokuapp.com/).
 
 ## Documentation
 
