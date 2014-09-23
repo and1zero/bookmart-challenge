@@ -20,9 +20,15 @@
             <div class="container">
                 <div class="pull-right">
                     <span style="font-size:16px;">Welcome to Book-Mart!</span>
-                    <span><a href="#" id="btnRegister">Register</a> / <a href="#" id="btnLogin">Login</a></span>
-                    <span><a href="#">Bag $0.00</a></span>
-                    <span><a href="#">Checkout</a></span>
+                    <span>
+                        {% if not app.session.get('user') %}
+                        <a href="/register">Register</a> / <a href="/login">Login</a>
+                        {% else %}
+                        Hi, {{app.session.get('user')['username']}}! <a href="/logout">Logout</a>
+                        {% endif %}
+                    </span>
+                    <span>Bag $ {% if not app.session.get('cart')%} 0.00 {% else %} {{app.session.get('cart')['total']}} {% endif %}</span>
+                    <span><a href="/checkout">Checkout</a></span>
                     <select>
                         <option value="sgd" selected="selected">SGD</option>
                         <option value="usd" >USD</option>
@@ -33,7 +39,7 @@
         <div class="bg-red">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3"><a class="logo" href="#">BOOK-MART</a></div>
+                    <div class="col-md-3"><a class="logo" href="/">BOOK-MART</a></div>
                     <div class="col-md-7 col-sm-9 col-xs-9 search ">
                         <div class="row">
                             <div class="col-md-10 col-sm-8 col-xs-9"><input type="text" class="form-control" placeholder="SEARCH FOR ANYTHING HERE" /></div>

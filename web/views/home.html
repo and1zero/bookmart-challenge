@@ -17,15 +17,13 @@
     <div class="col-sm-12">
         <h4><a href="/books">OUR BOOKS</a></h4>
         <ul>
-            <li><img src="images/book_sm1.png"/></li>
-            <li><img src="images/book_sm2.png"/></li>
-            <li><img src="images/book_sm1.png"/></li>
-            <li><img src="images/book_sm2.png"/></li>
-            <li><img src="images/book_sm1.png"/></li>
-            <li><img src="images/book_sm2.png"/></li>
-            <li><img src="images/book_sm1.png"/></li>
-            <li><img src="images/book_sm2.png"/></li>
-            <li><img src="images/book_sm1.png"/></li>
+            {% for book in books %}
+            <li>
+                <a href="/books/{{book.id}}">
+                    <img src="public/books/{{book.epub|replace({'.epub':'.jpg'})}}" style="width:80px;height:100px;" title="{{book.name}}"/>
+                </a>
+            </li>
+            {% endfor %}
         </ul>
     </div>
 </div>

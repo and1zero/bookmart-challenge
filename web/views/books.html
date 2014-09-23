@@ -1,8 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
 {% if books is defined %}
+{% if col == 1 %}
+<ol class="breadcrumb">
+    <li><a href="/books">Books</a></li>
+    <li class="active">{{bookname}}</li> 
+</ol>
+{% else %}
+<h3>{{title}}</h3>
+{% endif %}
 {% for book in books %}
-<p>{{ book.name  }}</p>
+{% if (loop.index % col == 1) or loop.first %}<div class="row" style="margin:10px 0;">{% endif %}
+    <div class="col-md-{{12/col}}">
+        <div class="col-md-4">
+            <img src="/public/books/{{book.epub|replace({'.epub':'.jpg'})}}" style="width:80px;height:100px;" title="{{book.name}}"/>
+        </div>
+        <div class="col-md-8">
+            <dl>
+                <dt><a href="/books/{{book.id}}">{{ book.name }}</a></dt>
+                <dd>By {{book.author}}</dd>
+            </dl>
+            <a href="add/{{book.id}}">+ Add to cart (${{book.price}})</a>
+        </div>
+    </div>
+    {% if (loop.index % col == 0) or loop.last %}</div>{% endif %}
 {% endfor %}
 {% else %}
 <p>No books</p>
