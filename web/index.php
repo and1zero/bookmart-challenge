@@ -11,21 +11,38 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
 ));
 // Register the Twig templating engine
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__.'/../views',
+    'twig.path' => __DIR__.'/views',
 ));
 
 // Our web handlers
 
 $app->get('/', function() use($app) {
     $app['monolog']->addDebug('logging output.');
-    return 'Hello';
-});
-
-$app->get('/twig/{name}', function ($name) use ($app) {
     return $app['twig']->render('index.twig', array(
-        'name' => $name,
+        'title' => "Bookmart - Home",
+        'carousel' => array('slider1.png' => '#', 'slider2.png' => '#', 'slider3.png' => '#', 'slider4.png' => '#'),
+        'banner' => array('image' => 'banner.png', 'description' => 'Grab a copy of Gillian Flynn\'s global best seller GONE GIRL before its movie adaptation hits the theatres worldwide.', 'link' => '#')
     ));
 });
+
+$app->get('/public/{file}', function ($file) use ($app) {
+    if(!file_exists(__DIR__.'/public/'.$file)){
+        $file = 'public/missing.png';
+    }
+    $stream = function () use ($file) {
+        readfile($file);
+    };
+
+    return $app->stream($stream, 200, array('Content-Type' => 'image/png'));
+});
+
+// Utilities
+$app['twig'] = $app->share($app->extend('twig',function($twig,$app){
+    $twig->addFunction(new \Twig_SimpleFunction('asset',function($path){
+        return 'assets/'.trim($path);
+    }));
+    return $twig;
+}));
 
 $app->run();
 

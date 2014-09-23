@@ -1,0 +1,17 @@
+<div class="carousel row hidden-xs hidden-sm"><!-- hide it in small devices -->
+    <div class="col-md-10 display inner">
+        {% for item,link in carousel %}
+        <div class="item">
+            <a href="{{link}}"><img src="public/{{item}}"/></a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-2 list-control inner">
+        <ol>
+            {% for item,link in carousel %}
+            <li><img src="public/{{item}}"/></li>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+
