@@ -15,8 +15,6 @@ $ git push heroku master
 $ heroku open
 ```
 
-Live demo can be observed [here](http://warm-springs-5019.herokuapp.com/).
-
 ## Documentation
 
 For more information about using PHP on Heroku, see these Dev Center articles:
